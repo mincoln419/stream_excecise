@@ -23,48 +23,54 @@ public class Order {
 		return id;
 	}
 
-	public void setId(long id) {
+	public Order setId(long id) {
 		this.id = id;
+		return this;
 	}
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public Order setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
+		return this;
 	}
 
 	public long getCreatedByUserId() {
 		return createdByUserId;
 	}
 
-	public void setCreatedByUserId(long createdByUserId) {
+	public Order setCreatedByUserId(long createdByUserId) {
 		this.createdByUserId = createdByUserId;
+		return this;
 	}
 
 	public OrderStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(OrderStatus status) {
+	public Order setStatus(OrderStatus status) {
 		this.status = status;
+		return this;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public Order setQuantity(int quantity) {
 		this.quantity = quantity;
+		return this;
 	}
 
 	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public Order setAmount(BigDecimal amount) {
 		this.amount = amount;
+		return this;
 	}
 
 	@Override
