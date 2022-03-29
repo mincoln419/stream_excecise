@@ -65,6 +65,7 @@ public class Chapter6Section6 {
 		List<Long> distinctIdList = orders.stream()
 				.map(o -> o.getCreatedByUserId())
 				.distinct()
+				.sorted()
 				.collect(Collectors.toList());
 		System.out.println(distinctIdList);
 		
