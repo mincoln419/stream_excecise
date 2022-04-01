@@ -16,6 +16,7 @@ public class Chapter7Section1 {
 		User user1 = new User()
 				.setId(101)
 				.setName("Alice")
+				.setEmail("alice@email.com")
 				.setVerified(true);
 				
 		User user2 = new User()

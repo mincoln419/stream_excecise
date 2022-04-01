@@ -1,6 +1,7 @@
 package com.mermer.ch7;
 
 import java.util.List;
+import java.util.Optional;
 
 public class User {
 
@@ -28,8 +29,8 @@ public class User {
 		return this;
 	}
 
-	public String getEmail() {
-		return email;
+	public Optional<String> getEmail() {
+		return Optional.ofNullable(email);
 	}
 
 	public User setEmail(String email) {
