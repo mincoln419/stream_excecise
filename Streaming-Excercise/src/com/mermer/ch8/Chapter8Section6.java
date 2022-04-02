@@ -5,52 +5,26 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.mermer.ch6.User;
 import com.mermer.ch6.model.Order;
+import com.mermer.ch6.model.Order.OrderStatus;
 import com.mermer.ch6.model.OrderLine;
 import com.mermer.ch6.model.OrderLine.OrderLineType;
 
-public class Chapter8Section3 {
+public class Chapter8Section6 {
 
 	public static void main(String[] args) {
 
-		List<Integer> numbers = Arrays.asList(3, -4, 2, 7, 9);
-		
-		int sum = numbers.stream()
-				.reduce((x,y) -> x + y)
-				.get();
-		
-		System.out.println(sum);
+		Map<Integer, String> numberMap = Stream.of(3, -4, 2, 7, 9)
+				.collect(Collectors.toMap(x -> x , x -> "Number is " + x));
 
-		int min = numbers.stream()
-				.reduce((x,y) -> x < y ? x : y)
-				.get()
-				;
-	
-		System.out.println(min);
-		
-		
-		int product = numbers.stream()
-				.reduce(1, (x, y) -> x * y)
-				;
-		System.out.println(product);
-		
-		
-		List<String> numberStrList = Arrays.asList("3", "2", "5", "-4");
-		int sumOfNumberStrList = numberStrList.stream()
-				.map(Integer::parseInt)
-				.reduce(0, (x,y) -> x + y)
-				;
-		System.out.println(sumOfNumberStrList);
-		
-		int sumOfNumberStrList2 = numberStrList.stream()
-				.reduce(0, (number, str) -> number + Integer.parseInt(str), (num1, num2) -> num1 + num2)
-				;
-		System.out.println(sumOfNumberStrList2);
-		
+		System.out.println(numberMap);
+
 		
 		User user1 = new User()
 				.setId(101)
@@ -74,17 +48,17 @@ public class Chapter8Section3 {
 		
 		List<User> users = Arrays.asList(user1, user2, user3);
 		
-		int sumOfNumberOfFriends = users.stream()
-				.map(User::getFriendUserIds)
-				.map(List::size)
-				.reduce(0, (x,y) -> x + y)
-				;
-		System.out.println(sumOfNumberOfFriends);
+		Map<Long, User> userIdToUserMap = users.stream()
+				.collect(Collectors.toMap(User::getId, Function.identity()));
+		System.out.println(userIdToUserMap);
+		System.out.println(userIdToUserMap.get(101L));
+		
 		
 		LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 		
 		Order order1 = new Order()
 				.setId(1001)
+				.setStatus(OrderStatus.IN_PROGRESS)
 				.setOrderLines(Arrays.asList(
 							new OrderLine()
 							.setId(10001)
@@ -103,6 +77,7 @@ public class Chapter8Section3 {
 		
 		Order order2 = new Order()
 				.setId(1002)
+				.setStatus(OrderStatus.CREATED)
 				.setOrderLines(Arrays.asList(
 							new OrderLine()
 							.setId(10003)
@@ -121,6 +96,7 @@ public class Chapter8Section3 {
 		
 		Order  order3 = new Order()
 				.setId(1003)
+				.setStatus(OrderStatus.ERROR)
 				.setOrderLines(Arrays.asList(
 							new OrderLine()
 							.setId(10006)
@@ -132,18 +108,13 @@ public class Chapter8Section3 {
 							.setAmount(BigDecimal.valueOf(4000))
 						)
 					);
+	
 		
-		List<Order> orders = Arrays.asList(order1, order2, order3);	
-
+		List<Order> orders = Arrays.asList(order1, order2, order3);
 		
-		BigDecimal amountSum = orders.stream()
-				.map(Order::getOrderLines)
-				.flatMap(List::stream)
-				.map(OrderLine::getAmount)
-				.reduce(BigDecimal.valueOf(0), (x, y) -> x.add(y))
-				;
-		System.out.println(amountSum);
-		
+		Map<Long, OrderStatus> orderIdToOrderStatusMap = orders.stream()
+				.collect(Collectors.toMap(Order::getId, Order::getStatus));
+		System.out.println(orderIdToOrderStatusMap);
 	}
 	
 
