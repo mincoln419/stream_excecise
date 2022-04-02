@@ -56,7 +56,7 @@ public class Chapter6Section4 {
 		List<String> emails = new ArrayList<>();
 		for(User user:users) {
 			if(!user.isVerified()) {
-				String email = user.getEmail();
+				String email = user.getEmail().get();
 				emails.add(email);	
 			}
 		}
@@ -66,6 +66,7 @@ public class Chapter6Section4 {
 		List<String> emails2 = users.stream()
 				.filter(user -> !user.isVerified())
 				.map(User::getEmail)
+				.map(o -> o.get())
 				.collect(Collectors.toList());
 		System.out.println(emails2);
 		

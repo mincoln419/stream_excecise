@@ -55,6 +55,7 @@ public class Chapter6Section3 {
 		
 		List<String> userEmailList = users.stream()
 				.map(User::getEmail)
+				.map(o -> o.get())
 				.collect(Collectors.toList());
 		System.out.println(userEmailList);
 		

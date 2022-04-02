@@ -2,6 +2,7 @@ package com.mermer.ch6;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class User {
 
@@ -40,8 +41,8 @@ public class User {
 		return this;
 	}
 
-	public String getEmail() {
-		return email;
+	public Optional<String> getEmail() {
+		return Optional.of(email);
 	}
 
 	public User setEmail(String email) {
