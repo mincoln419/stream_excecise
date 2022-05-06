@@ -1,7 +1,7 @@
 package com.mermer.java8;
 
 public interface RunSomething {
-	void doIt();
+	int doIt(int a);
 	
 	static void printName() {
 		System.out.println("Mermer");
