@@ -4,10 +4,10 @@ public class Greeting {
 	
 	private String name;
 	
-	private Greeting() {
+	public Greeting() {
 	}
 	
-	private Greeting(String name) {
+	public Greeting(String name) {
 		this.name = name;
 	}
 	
@@ -15,8 +15,12 @@ public class Greeting {
 		return "hello " + name;
 	}
 	
-	public String hi(String name) {
+	public static String hi(String name) {
 		return "hi " + name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }
