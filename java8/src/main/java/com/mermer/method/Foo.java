@@ -15,6 +15,7 @@ public class Foo {
 			}
 		});
 		
+		//임의 객체의 인스턴스 매소드를 참조한 경우
 		Arrays.sort(names, String::compareToIgnoreCase);
 		
 		
