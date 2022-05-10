@@ -1,4 +1,4 @@
-package com.mermer.method;
+package com.mermer.method;import javax.script.ScriptContext;
 
 public interface Bar {
 
@@ -17,4 +17,8 @@ public interface Bar {
 	}
 
 	String getName();
+	
+	static void printLowerCase(String text) {
+		System.out.println(text.toLowerCase());
+	}
 }

@@ -25,5 +25,7 @@ public class App {
 		Greeting newGreetingChalie = newArgGreeting.apply("Chalie");
 		System.out.println(newGreetingChalie.getName());
 		
+		Bar.printLowerCase("HELLO LOW");
+		
 	}
 }
