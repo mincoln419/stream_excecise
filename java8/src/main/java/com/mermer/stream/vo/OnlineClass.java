@@ -1,10 +1,10 @@
 package com.mermer.stream.vo;
 
-import lombok.AllArgsConstructor;
+import java.util.Optional;
+
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class OnlineClass {
 
 	private Integer id;
@@ -12,5 +12,16 @@ public class OnlineClass {
 	private String title;
 	
 	private boolean closed;
+
+	public OnlineClass(Integer id,  String title, boolean closed) {
+		this.id = id;
+		this.title = title;
+		this.closed = closed;
+		
+	}
+	
+	private Optional<Progress> progress;
+	
+	
 	
 }
