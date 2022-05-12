@@ -22,6 +22,4 @@ public class OnlineClass {
 	
 	private Optional<Progress> progress;
 	
-	
-	
 }
