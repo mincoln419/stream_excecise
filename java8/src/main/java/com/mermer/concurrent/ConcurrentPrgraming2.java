@@ -17,22 +17,24 @@ public class ConcurrentPrgraming2 {
 
 		// 람다식으로 변형
 		Thread theradLamda = new Thread(() -> {
-			while (true) {
-				System.out.println("Lamda Thread:: " + Thread.currentThread().getName());
-				try {
-					Thread.sleep(1000L);
-				} catch (InterruptedException e) {
-					System.out.println("exit");
-					return;// interrupt 받았다고 무조건 끝나는게 아니라 요 return 때문에 종료되는 것임
-				}
+			System.out.println("Lamda Thread:: " + Thread.currentThread().getName());
+			try {
+				Thread.sleep(3000L);
+			} catch (InterruptedException e) {
+				throw new IllegalStateException();
 			}
+
 		});
 
 		theradLamda.start();
 
 		System.out.println("Hello " + Thread.currentThread().getName());
-		Thread.sleep(3000L);
-		theradLamda.interrupt();
+
+		theradLamda.join();
+		System.out.println(theradLamda + " is finished");
+		
+		//수동으로 스레드 관리가 어려워짐..> executor가 개발되었고, 이를 사용하게 되면 future를 사용할 수 있고, 그제서야 fucture Completable을 사용할 수 있음
+		
 
 	}
 
