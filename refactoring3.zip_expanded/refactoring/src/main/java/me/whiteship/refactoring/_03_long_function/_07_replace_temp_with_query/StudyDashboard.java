@@ -72,16 +72,23 @@ public class StudyDashboard {
             writer.print(header(totalNumberOfEvents, participants.size()));
 
             participants.forEach(p -> {
-                long count = p.homework().values().stream()
-                        .filter(v -> v == true)
-                        .count();
-                double rate = count * 100 / totalNumberOfEvents;
-
-                String markdownForHomework = String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents), rate);
+                
+                String markdownForHomework = getMarkdownForParticipant(totalNumberOfEvents, p, getRate(totalNumberOfEvents, p));
                 writer.print(markdownForHomework);
             });
         }
     }
+
+	private double getRate(int totalNumberOfEvents, Participant p) {
+		long count = p.homework().values().stream()
+                .filter(v -> v == true)
+                .count();
+		return count * 100 / totalNumberOfEvents;
+	}
+
+	private String getMarkdownForParticipant(int totalNumberOfEvents, Participant p, double rate) {
+		return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents), rate);
+	}
 
     /**
      * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 |
