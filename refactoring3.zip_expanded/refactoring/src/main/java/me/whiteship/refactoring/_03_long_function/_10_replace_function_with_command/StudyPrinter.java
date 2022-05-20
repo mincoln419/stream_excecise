@@ -12,8 +12,6 @@ public class StudyPrinter {
 	
 	private List<Participant> participants;
 	
-	
-	
 	public StudyPrinter(int totalNumberOfEvents, List<Participant> participants) {
 		this.totalNumberOfEvents = totalNumberOfEvents;
 		this.participants = participants;
