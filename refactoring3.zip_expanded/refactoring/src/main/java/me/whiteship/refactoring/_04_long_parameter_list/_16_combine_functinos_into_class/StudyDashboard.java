@@ -76,27 +76,6 @@ public class StudyDashboard {
 
 
 
-    /**
-     * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
-     */
-    private String checkMark(Map<Integer, Boolean> homework) {
-        StringBuilder line = new StringBuilder();
-        for (int i = 1 ; i <= this.totalNumberOfEvents ; i++) {
-            if(homework.containsKey(i) && homework.get(i)) {
-                line.append("|:white_check_mark:");
-            } else {
-                line.append("|:x:");
-            }
-        }
-        return line.toString();
-    }
-
-    private double getRate(Map<Integer, Boolean> homework) {
-        long count = homework.values().stream()
-                .filter(v -> v == true)
-                .count();
-        return (double) (count * 100 / this.totalNumberOfEvents);
-    }
 
 
 
