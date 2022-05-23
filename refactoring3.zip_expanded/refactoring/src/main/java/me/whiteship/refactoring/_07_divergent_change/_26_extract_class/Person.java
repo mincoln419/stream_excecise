@@ -4,35 +4,22 @@ public class Person {
 
     private String name;
 
-    private String officeAreaCode;
+    private TelephoneNumber telephoneNumber;
+    
+	public Person(String name, TelephoneNumber telephoneNumber) {
+		this.name = name;
+		this.telephoneNumber = telephoneNumber;
+	}
 
-    private String officeNumber;
-
-    public String telephoneNumber() {
-        return this.officeAreaCode + " " + this.officeNumber;
-    }
-
+	public String getOfficeNumber(TelephoneNumber telephoneNumber) {
+		return telephoneNumber.getTelephoneNumber();
+	}
+	
     public String name() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String officeAreaCode() {
-        return officeAreaCode;
-    }
-
-    public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
-    }
-
-    public String officeNumber() {
-        return officeNumber;
-    }
-
-    public void setOfficeNumber(String officeNumber) {
-        this.officeNumber = officeNumber;
     }
 }
