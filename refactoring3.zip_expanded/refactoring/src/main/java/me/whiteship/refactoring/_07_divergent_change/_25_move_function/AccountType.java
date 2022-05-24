@@ -12,7 +12,7 @@ public class AccountType {
     }
 
 	double overdraftCharge(int daysOverdrawn) {
-	    if (isPremium()) {
+	    if (this.isPremium()) {
 	        final int baseCharge = 10;
 	        if (daysOverdrawn <= 7) {
 	            return baseCharge;
