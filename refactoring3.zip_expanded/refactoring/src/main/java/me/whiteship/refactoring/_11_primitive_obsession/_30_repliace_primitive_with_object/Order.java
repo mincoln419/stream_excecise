@@ -10,7 +10,11 @@ public class Order {
         this.priority = priority;
     }
 
-    public String getPriority() {
+    public Order(String value) {
+    	this.priority = new Priority(value);
+	}
+
+	public String getPriority() {
         return priority.toString();
     }
 }
