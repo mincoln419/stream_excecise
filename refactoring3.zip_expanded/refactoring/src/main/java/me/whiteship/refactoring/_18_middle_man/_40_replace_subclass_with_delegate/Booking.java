@@ -21,7 +21,7 @@ public class Booking {
     }
     
     public static Booking createPremiumBook(Show show, LocalDateTime time, PremiumExtra extra) {
-    	PremiumBooking booking =  new PremiumBooking(show, time, extra);
+    	Booking booking =  Booking.createBook(show, time);
     	booking.premiumDelegate =  new PremiumDelegate(booking, extra);
     	return booking; 
     }
@@ -42,7 +42,10 @@ public class Booking {
     public double basePrice() {
         double result = this.show.getPrice();
         if (this.isPeakDay()) result += Math.round(result * 0.15);
-        return result;
+        return (this.premiumDelegate !=null) ? this.premiumDelegate.extendBasePrice(result) :result;
     }
 
+    public boolean hasDinner() {
+        return this.premiumDelegate !=null && this.premiumDelegate.hasDinner();
+    }
 }
