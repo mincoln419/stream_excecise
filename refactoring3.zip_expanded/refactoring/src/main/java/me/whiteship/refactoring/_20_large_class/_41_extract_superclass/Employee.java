@@ -1,10 +1,8 @@
 package me.whiteship.refactoring._20_large_class._41_extract_superclass;
 
-public class Employee {
+public class Employee extends Party {
 
     private Integer id;
-
-    private String name;
 
     private double monthlyCost;
 
@@ -14,10 +12,6 @@ public class Employee {
 
     public Integer getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public double getMonthlyCost() {
