@@ -8,29 +8,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
 
-    @Test
-    void fulltime() {
-        Employee employee = new Employee("full-time", List.of("spring", "jpa"));
-        assertEquals(120, employee.vacationHours());
-        assertTrue(employee.canAccessTo("new project"));
-        assertTrue(employee.canAccessTo("spring"));
-    }
+	@Test
+	void fulltime() {
+		Employee employee = new FulltimeEmployee();
+		assertEquals(120, employee.vacationHours());
+		assertTrue(employee.canAccessTo("new project"));
+		assertTrue(employee.canAccessTo("spring"));
+	}
 
-    @Test
-    void partime() {
-        Employee employee = new Employee("part-time", List.of("spring", "jpa"));
-        assertEquals(80, employee.vacationHours());
-        assertFalse(employee.canAccessTo("new project"));
-        assertTrue(employee.canAccessTo("spring"));
-    }
+	@Test
+	void partime() {
+		Employee employee = new ParttimeEmployee(List.of("spring", "jpa"));
+		assertEquals(80, employee.vacationHours());
+		assertFalse(employee.canAccessTo("new project"));
+		assertTrue(employee.canAccessTo("spring"));
+	}
 
-    @Test
-    void temporal() {
-        Employee employee = new Employee("temporal", List.of("jpa"));
-        assertEquals(32, employee.vacationHours());
-        assertFalse(employee.canAccessTo("new project"));
-        assertFalse(employee.canAccessTo("spring"));
-        assertTrue(employee.canAccessTo("jpa"));
-    }
+	@Test
+	void temporal() {
+		Employee employee = new TemporalEmployee(List.of("jpa"));
+		assertEquals(32, employee.vacationHours());
+		assertFalse(employee.canAccessTo("new project"));
+		assertFalse(employee.canAccessTo("spring"));
+		assertTrue(employee.canAccessTo("jpa"));
+	}
 
 }

@@ -35,18 +35,18 @@ class BookingTest {
 
     @Test
     void talkback() {
-        Show lionKing = new Show(List.of(), 120);
-        Show aladin = new Show(List.of("talkback"), 120);
-        LocalDateTime weekday = LocalDateTime.of(2022, 1, 20, 19, 0);
-        LocalDateTime weekend = LocalDateTime.of(2022, 1, 15, 19, 0);
+        Show noTalkbackShow = new Show(List.of(), 120);
+        Show talkbackShow = new Show(List.of("talkback"), 120);
+        LocalDateTime nonPeekday = LocalDateTime.of(2022, 1, 20, 19, 0);
+        LocalDateTime peekday = LocalDateTime.of(2022, 1, 15, 19, 0);
 
-        assertFalse(new Booking(lionKing, weekday).hasTalkback());
-        assertTrue(new Booking(aladin, weekday).hasTalkback());
-        assertFalse(new Booking(aladin, weekend).hasTalkback());
+        assertFalse(Booking.createBook(noTalkbackShow, nonPeekday).hasTalkback());
+        assertTrue(Booking.createBook(talkbackShow, nonPeekday).hasTalkback());
+        assertFalse(Booking.createBook(talkbackShow, peekday).hasTalkback());
 
         PremiumExtra premiumExtra = new PremiumExtra(List.of(), 50);
-        assertTrue(new PremiumBooking(aladin, weekend, premiumExtra).hasTalkback());
-        assertFalse(new PremiumBooking(lionKing, weekend, premiumExtra).hasTalkback());
+        assertTrue(Booking.createPremiumBook(talkbackShow, peekday, premiumExtra).hasTalkback());
+        assertFalse(Booking.createPremiumBook(noTalkbackShow, peekday, premiumExtra).hasTalkback());
     }
 
     @Test

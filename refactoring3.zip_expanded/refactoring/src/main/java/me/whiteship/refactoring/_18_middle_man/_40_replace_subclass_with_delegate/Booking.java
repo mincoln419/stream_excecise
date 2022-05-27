@@ -8,14 +8,30 @@ public class Booking {
     protected Show show;
 
     protected LocalDateTime time;
+    
+    protected PremiumDelegate premiumDelegate;
 
     public Booking(Show show, LocalDateTime time) {
         this.show = show;
         this.time = time;
     }
+    
+    public static Booking createBook(Show show, LocalDateTime time) {
+    	return new Booking(show, time);
+    }
+    
+    public static Booking createPremiumBook(Show show, LocalDateTime time, PremiumExtra extra) {
+    	PremiumBooking booking =  new PremiumBooking(show, time, extra);
+    	booking.premiumDelegate =  new PremiumDelegate(booking, extra);
+    	return booking; 
+    }
 
     public boolean hasTalkback() {
-        return this.show.hasOwnProperty("talkback") && !this.isPeakDay();
+        return (this.premiumDelegate !=null)? this.premiumDelegate.hasTalkback():
+        		this.show.hasOwnProperty("talkback") && !this.isPeakDay();
+        	
+        		
+        
     }
 
     protected boolean isPeakDay() {
