@@ -8,6 +8,10 @@ class OrganizationTest {
 	void test() {
 		Organization organization = new Organization();
 		System.out.println(organization.name);
+		
+		OranazationRecord oranazationRecord = new OranazationRecord("mermer");
+		oranazationRecord.name();
+		
 	}
 
 }
