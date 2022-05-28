@@ -6,15 +6,12 @@ public class Employee extends Party {
 
     private double monthlyCost;
 
-    public double annualCost() {
-        return this.monthlyCost * 12;
-    }
-
     public Integer getId() {
         return id;
     }
 
-    public double getMonthlyCost() {
+    @Override
+    public double monthlyCost() {
         return monthlyCost;
     }
 }
