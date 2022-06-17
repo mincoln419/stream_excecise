@@ -11,13 +11,13 @@ import java.io.IOException;
 public class Masulsa {
 
 	public static void main(String[] args) {
-		try {
-			new ByteBuddy().redefine(Moja.class)
-			.method(named("pullOut")).intercept(FixedValue.value("Rabbit!"))
-			.make().saveIn(new File("C://stream_excecise/demo/target/classes/com/example/demo/"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			new ByteBuddy().redefine(Moja.class)
+//			.method(named("pullOut")).intercept(FixedValue.value("Rabbit!"))
+//			.make().saveIn(new File("C://stream_excecise/demo/target/classes/"));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		System.out.println(new Moja().pullOut());
 	}
 	
