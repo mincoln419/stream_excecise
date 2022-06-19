@@ -1,5 +1,6 @@
 package com.example.demo.reflection;
 
+@MyAnnotation
 public class Book {
 
 	
