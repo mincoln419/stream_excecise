@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD})
 @Inherited
-public @interface MyAnnotation {
+public @interface MyAnnotation2 {
 
 	String name() default "mermer";
 	int number() default 100;
