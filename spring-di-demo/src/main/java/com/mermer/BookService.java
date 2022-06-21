@@ -10,11 +10,11 @@ public class BookService {
 	BookRepository bookRepository;
 
 	public void rent(Book book) {
-		System.out.println("rents " + book.title);
+		System.out.println("rents " + book.getTitle());
 	}
 
 	public void returnBook(Book book) {
-		System.out.println("return " + book.title);
+		System.out.println("return " + book.getTitle());
 		
 	}
 	

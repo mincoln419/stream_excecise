@@ -1,27 +1,15 @@
 package com.mermer;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter @EqualsAndHashCode
+@NoArgsConstructor
 public class Book {
 
-	String title;
-	String contents;
+	private String title;
+	private String contents;
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
 }

@@ -31,6 +31,11 @@
 			<artifactId>byte-buddy</artifactId>
 			<version>LATEST</version>
 		</dependency>
+		<dependency>
+			<groupId>com.mermer</groupId>
+			<artifactId>mojamagic</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
